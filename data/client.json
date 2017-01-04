@@ -1,0 +1,15 @@
+[{
+    "Name": "Praveen",
+    "Email": "test@test.com",
+    "Phone":123456,
+    "Area":"ECIL",
+    "City":"Hyderabad",
+    "Address":"test"
+},{
+    "Name": "Malla Reddy",
+    "Email": "test@test.com",
+    "Phone":123456,
+    "Area":"Amberpet",
+    "City":"Hyderabad",
+    "Address":"test"
+}]

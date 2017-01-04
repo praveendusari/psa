@@ -1,0 +1,13 @@
+[{
+    "name": "Praveen",
+    "description": "test description",
+    "username":"Admin",
+    "password":"123456",
+    "category":1
+},{
+    "name": "Chris",
+    "description": "test description",
+    "username":"admin",
+    "password":"admin",
+    "category":2
+}]
