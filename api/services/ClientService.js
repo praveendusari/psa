@@ -22,5 +22,14 @@ module.exports = {
             }
             callBack(null, result);
         });
+    },
+    deleteClient: function(Id,callBack) {
+        ORMService.delete(Client, {clientId: Id}, function(err, result) {
+            if (err) {
+                callBack(err, null);
+            }
+            console.log(result);
+            callBack(null, result);
+        });
     }
 };

@@ -47,14 +47,19 @@ module.exports.routes = {
     action: 'getallRecruiters',
     skipAssets: true
   },
-  '/addclients':{
+  '/addClientpage':{
     controller: 'ClientController',
-    action:'addRecruiterpage',
+    action:'addClientpage',
     skipAssets: true
   },
   '/addclientrecord':{
     controller: 'ClientController',
-    action:'addRecruiter',
+    action:'addClient',
+    skipAssets: true
+  },
+  '/deleteclientrecord/:id':{
+    controller: 'ClientController',
+    action:'addClient',
     skipAssets: true
   },
   '/loginpage':{

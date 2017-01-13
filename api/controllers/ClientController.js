@@ -14,12 +14,11 @@ module.exports = {
 			});
 		})
 	},
-	addRecruiterpage:function(req,res){
+	addClientpage:function(req,res){
 		return res.view('addclient',{'recactive':true});
 	},
-	addRecruiter:function(req,res){
+	addClient:function(req,res){
 		var params = _.extend(req.query || {}, req.params || {}, req.body || {});
-		console.log(params);
 		Client.create({
 			"name":params.name,
 			"email":params.email,
@@ -28,5 +27,12 @@ module.exports = {
 			"description":params.description
 		});
 		return res.redirect('/clients');
+	},
+	deleteclientrecord:function(req,res){
+		var id=parseInt(req.param('id'))
+		ClientService.deleteClient(id,function(err,result){
+			return res.redirect('/clients');
+		});
+
 	}
 };
