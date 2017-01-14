@@ -59,7 +59,7 @@ module.exports.routes = {
   },
   '/deleteclientrecord/:id':{
     controller: 'ClientController',
-    action:'addClient',
+    action:'deleteclientrecord',
     skipAssets: true
   },
   '/loginpage':{

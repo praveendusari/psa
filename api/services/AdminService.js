@@ -7,19 +7,17 @@
  */
 
 module.exports = {
-    getAdmindetails: function(params, callBack) {
-        ORMService.view(Admin, {}, {
-            where:{
-              'username':params.username,
-              'password':params.password
-            }
-        }, function(err, records) {
-            if (err) {
-              console.log(err);
-                callBack(err, null);
-            }
-            console.log(records);
-            callBack(null, records);
-        });
-    }
+  getAdmindetails: function(params, callBack) {
+    ORMService.view(Admin, {}, {
+      where: {
+        username: params.username,
+        password: params.password
+      }
+    }, function(err, records) {
+      if (err) {
+        callBack(err, null);
+      }
+      callBack(null, records);
+    });
+  }
 };

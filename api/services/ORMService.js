@@ -19,7 +19,6 @@ module.exports = {
         orm.destroy({
             where: query
         }).then(function(result) {
-            console.log(result);
             callback(null, "Data deleted successfully");
         }).catch(function(error) {
             console.log(error.message);

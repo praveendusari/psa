@@ -20,11 +20,12 @@ module.exports = {
 	addClient:function(req,res){
 		var params = _.extend(req.query || {}, req.params || {}, req.body || {});
 		Client.create({
-			"name":params.name,
-			"email":params.email,
-			"userid":params.username,
-			"password":params.password,
-			"description":params.description
+			"Name":params.name,
+			"Email":params.email,
+			"Phone":params.phone,
+			"City":params.city,
+			"Area":params.area,
+			"Address":params.address
 		});
 		return res.redirect('/clients');
 	},

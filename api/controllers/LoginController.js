@@ -8,17 +8,20 @@
 module.exports = {
 	Index: function(req, res) {
 
-			return res.view('loginpage',{layout: 'login'});
+			return res.view('loginpage',{layout: 'login', error:null});
 
 	},
 	getDetails:function(req,res){
 		var params = _.extend(req.query || {}, req.params || {}, req.body || {});
-		console.log(params);
 		AdminService.getAdmindetails(params,function(err,result){
-			if(result){
+			if(err){
+				console.log(err);
+				return res.view('loginpage',{layout: 'login',error:"Invalid Username and Password"});
+			}else{
 				req.session.authenticated=params.username;
 				res.redirect('/');
 			}
+
 		});
 	}
 };
