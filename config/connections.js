@@ -18,7 +18,8 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.connections.html
  */
-
+ var pcs = require('pg-connection-string');
+ var connection = getConnectionSettings();
 module.exports.connections = {
 
   /***************************************************************************
@@ -82,15 +83,15 @@ module.exports.connections = {
   //   database: 'YOUR_POSTGRES_DB' //optional
   // }
   somePostgresqlServer: {
-    user: "postgres",
-    password: "123456",
-    database: "PSA",
+    user: (connection.user === undefined ? "postgres" : connection.user),
+    password: (connection.password === undefined ? "123456" : connection.password),
+    database: (connection.database === undefined ? "PSA" : connection.database),
     options: {
         dialect: 'postgres',
         dialectOptions: {
-            ssl: false
+            ssl: (connection.ssl === undefined ? false : connection.ssl)
         },
-        host: "localhost",
+        host: (connection.database === undefined ? "localhost" : connection.database),
         port: 5432,
         logging: console.log
     }
@@ -103,3 +104,20 @@ module.exports.connections = {
    ***************************************************************************/
 
 };
+
+function getConnectionSettings() {
+    var result = {};
+
+    if (process.env.DB_ACTIVE === undefined) {
+        result.user = process.env.PG_USER;
+        result.password = process.env.PG_PASSWORD;
+        result.database = process.env.PG_DATABASE;
+        result.host = process.env.PG_URL;
+        result.port = process.env.PG_PORT;
+    } else {
+        result = pcs.parse(process.env[process.env.DB_ACTIVE]);
+        result.ssl = process.env.PG_SSL || false;
+    }
+
+    return result;
+}

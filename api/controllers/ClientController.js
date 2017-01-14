@@ -7,7 +7,7 @@
 
 module.exports = {
 	getallRecruiters: function(req, res) {
-		ClientService.getallRecruiters(function(err,result){
+		ClientService.getallClients(function(err,result){
 			return res.view('clients',{
 					'recruiters': result,
 					'recactive':true
@@ -19,21 +19,26 @@ module.exports = {
 	},
 	addClient:function(req,res){
 		var params = _.extend(req.query || {}, req.params || {}, req.body || {});
-		Client.create({
+		var objects={
 			"Name":params.name,
 			"Email":params.email,
 			"Phone":params.phone,
 			"City":params.city,
 			"Area":params.area,
 			"Address":params.address
+		};
+		ClientService.insertClient(objects,function(err,result){
+			if(err){
+
+			}else{
+						return res.redirect('/clients');
+			}
 		});
-		return res.redirect('/clients');
 	},
 	deleteclientrecord:function(req,res){
 		var id=parseInt(req.param('id'))
 		ClientService.deleteClient(id,function(err,result){
 			return res.redirect('/clients');
 		});
-
 	}
 };

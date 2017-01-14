@@ -15,7 +15,7 @@ module.exports = {
      * @param  {String} visitID    : the visitId for which we are fetching activities
      * @param  {Function} callBack : callback to handle responses.
      */
-    getallRecruiters: function(callBack) {
+    getallClients: function(callBack) {
         ORMService.view(Client, {}, {}, function(err, result) {
             if (err) {
                 callBack(err, null);
@@ -25,6 +25,15 @@ module.exports = {
     },
     deleteClient: function(Id,callBack) {
         ORMService.delete(Client, {clientId: Id}, function(err, result) {
+            if (err) {
+                callBack(err, null);
+            }
+            console.log(result);
+            callBack(null, result);
+        });
+    },
+    insertClient: function(params,callBack) {
+        ORMService.upsert(Client,{},params, function(err, result) {
             if (err) {
                 callBack(err, null);
             }
