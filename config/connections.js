@@ -117,6 +117,7 @@ function getConnectionSettings() {
     } else {
         result = pcs.parse(process.env[process.env.DB_ACTIVE]);
         result.ssl = process.env.PG_SSL || false;
+        console.log(result);
     }
 
     return result;
