@@ -91,8 +91,8 @@ module.exports.connections = {
         dialectOptions: {
             ssl: (connection.ssl === undefined ? false : connection.ssl)
         },
-        host:"ec2-23-21-80-230.compute-1.amazonaws.com",
-        port: "5432",
+        host: (connection.host === undefined ? "localhost" : connection.host),
+        port: (connection.port === undefined ? "5432" : connection.port),
         logging: console.log
     }
   },
