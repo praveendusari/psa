@@ -66,7 +66,11 @@ module.exports.routes = {
     controller: 'LoginController',
     action: 'getDetails',
     skipAssets: true
-
+  },
+  '/feedbackstoday':{
+    controller: 'FeedbackController',
+    action: 'getallfeedbackstoday',
+    skipAssets: true
   }
 
 

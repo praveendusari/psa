@@ -1,0 +1,11 @@
+[{
+    "ClientId": 1,
+    "NextmeetingTime": "2017-01-14",
+    "Comments":"Test comments",
+    "Intrested":"yes"
+},{
+  "ClientId": 2,
+  "NextmeetingTime": "2017-01-14",
+  "Comments":"Test comments of 2",
+  "Intrested":"yes"
+}]

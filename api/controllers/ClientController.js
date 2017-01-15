@@ -40,5 +40,11 @@ module.exports = {
 		ClientService.deleteClient(id,function(err,result){
 			return res.redirect('/clients');
 		});
+	},
+	numberofClients:function(req,res){
+		var id=parseInt(req.param('id'))
+		ClientService.deleteClient(id,function(err,result){
+			return res.redirect('/clients');
+		});
 	}
 };

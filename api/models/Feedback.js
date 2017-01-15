@@ -10,7 +10,7 @@ module.exports = {
         tableName: 'PSA_feedback',
         classMethods: {},
         instanceMethods: {},
-        hooks: {}
+        hooks: {afterSync: seed}
 
     },
     attributes: {
@@ -44,10 +44,10 @@ module.exports = {
 
 function seed(name, next) {
     if (sails.config.models.seed) {
-        const data = require('../../data/client');
+        const data = require('../../data/feedback');
 
         _.forEach(data, function(row) {
-            Client.create(row);
+            Feedback.create(row);
         });
 
         next();
